@@ -1,0 +1,20 @@
+*.cs linguist-language=C#
+*.shader linguist-language=C#
+*.cginc linguist-language=C#
+*.compute linguist-language=C#
+*.meta linguist-language=C#
+*.unity linguist-language=C#
+*.prefab linguist-language=C#
+*.mat linguist-language=C#
+*.asset linguist-language=C#
+*.anim linguist-language=C#
+*.png linguist-vendored
+*.jpg linguist-vendored
+*.jpeg linguist-vendored
+*.tga linguist-vendored
+*.fbx linguist-vendored
+*.mp3 linguist-vendored
+*.wav linguist-vendored
+*.dll linguist-vendored
+*.exe linguist-vendored
+

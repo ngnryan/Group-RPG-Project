@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 castPosition = transform.position;
-        castPosition.y += 1;
+        castPosition.y += 0.1f;
         if (Physics.Raycast(castPosition, -transform.up, out hit, Mathf.Infinity, terrainLayer))
         {
             if (hit.collider != null)

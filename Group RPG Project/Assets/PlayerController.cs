@@ -1,51 +1,63 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
+    [Tooltip("The movement speed of the character.")]
+    public float speed = 5.0f;
 
-    public float speed;
-    public float groundDistance;
+    [Tooltip("Check this box if your sprite faces left by default.")]
+    public bool invertFlipLogic = false;
 
-    public LayerMask terrainLayer;
-    public Rigidbody rb;
-    public SpriteRenderer sr;
+    private const float deadZone = 0.1f;
+    private Rigidbody rb;
+    private SpriteRenderer sr;
+    private Vector3 moveInput;
+    private float horizontalInput;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        sr = GetComponentInChildren<SpriteRenderer>(); 
 
+        if (sr == null)
+        {
+            Debug.LogError("PlayerController could NOT find a SpriteRenderer in any child objects. Flipping will not work.");
+        }
+
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        Vector3 castPosition = transform.position;
-        castPosition.y += 1;
-        if (Physics.Raycast(castPosition, -transform.up, out hit, Mathf.Infinity, terrainLayer))
+        // Store input values in Update for use in other methods
+        horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        moveInput = new Vector3(horizontalInput, 0, verticalInput).normalized;
+    }
+
+    void FixedUpdate()
+    {
+        // Apply physics-based movement in FixedUpdate
+        rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+    }
+
+    void LateUpdate()
+    {
+        // Handle visual updates in LateUpdate to override any animation changes.
+        if (sr != null)
         {
-            if (hit.collider != null)
+            if (horizontalInput < -deadZone)
             {
-                Vector3 movePosition = transform.position;
-                movePosition.y = hit.point.y + groundDistance;
-                transform.position = movePosition;
+                // Moving left
+                sr.flipX = !invertFlipLogic;
+            }
+            else if (horizontalInput > deadZone)
+            {
+                // Moving right
+                sr.flipX = invertFlipLogic;
             }
         }
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        Vector3 moveDirection = new Vector3(x, 0, y);
-        rb.linearVelocity = moveDirection * speed;
-
-        if (x != 0 && x < 0)
-        {
-            sr.flipX = true;
-        }
-        else if (x != 0 && x > 0)
-        {
-            sr.flipX = false;
-        }
-
     }
 }

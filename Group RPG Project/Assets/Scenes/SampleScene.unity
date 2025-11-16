@@ -1016,7 +1016,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7f3fa1054dfe547fd9829ea7ca566170, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1024,7 +1024,7 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1226006533
@@ -1453,15 +1453,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 33f50a956234d4343b637e845a072eb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2076144727
@@ -1477,7 +1477,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 3
-  invertFlipLogic: 0
+  backSprite: {fileID: 21300000, guid: 5416428aaad39409881e402a92ba5b68, type: 3}
+  frontSprite: {fileID: 21300000, guid: 33f50a956234d4343b637e845a072eb5, type: 3}
+  leftSprite: {fileID: 21300000, guid: 0d63349fb48e24bf1bdc5455de460a0d, type: 3}
+  rightSprite: {fileID: 21300000, guid: 5737e3835abeb423f93c0f218f4f05a1, type: 3}
 --- !u!54 &2076144728
 Rigidbody:
   m_ObjectHideFlags: 0

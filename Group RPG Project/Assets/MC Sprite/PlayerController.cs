@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The sound effect for the character's footsteps.")]
     public AudioClip walkingSound;
 
+    private Animator animator;
+
     private const float deadZone = 0.1f;
     private Rigidbody rb;
     private SpriteRenderer sr;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         sr = GetComponentInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
 
         if (sr == null)
         {
@@ -51,6 +54,14 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         moveInput = new Vector3(horizontalInput, 0, verticalInput);
+
+        //Animation
+        bool isMoving = moveInput.magnitude > deadZone;
+
+        animator.SetBool("IsMoving", isMoving);
+        animator.SetFloat("MoveX", horizontalInput);
+        animator.SetFloat("MoveZ", verticalInput);
+
     }
 
     void FixedUpdate()

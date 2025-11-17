@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
     [Tooltip("The movement speed of the character.")]
@@ -20,15 +21,21 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Sprite to display when moving right.")]
     public Sprite rightSprite;
 
+    [Header("Audio")]
+    [Tooltip("The sound effect for the character's footsteps.")]
+    public AudioClip walkingSound;
+
     private const float deadZone = 0.1f;
     private Rigidbody rb;
     private SpriteRenderer sr;
+    private AudioSource audioSource;
     private Vector3 moveInput;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        sr = GetComponentInChildren<SpriteRenderer>(); 
+        sr = GetComponentInChildren<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         if (sr == null)
         {
@@ -54,30 +61,39 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate()
     {
-        // Handle visual updates in LateUpdate to override any animation changes.
-        if (sr != null)
+        bool isMoving = moveInput.magnitude > deadZone;
+
+        // Handle visual and audio updates in LateUpdate
+        if (isMoving)
         {
-            if (Mathf.Abs(moveInput.x) > deadZone)
+            // --- Sprite switching logic ---
+            if (sr != null)
             {
-                if (moveInput.x > 0)
+                if (Mathf.Abs(moveInput.x) > deadZone)
                 {
-                    sr.sprite = rightSprite;
+                    if (moveInput.x > 0) sr.sprite = rightSprite;
+                    else sr.sprite = leftSprite;
                 }
-                else
+                else if (Mathf.Abs(moveInput.z) > deadZone)
                 {
-                    sr.sprite = leftSprite;
+                    if (moveInput.z > 0) sr.sprite = backSprite;
+                    else sr.sprite = frontSprite;
                 }
             }
-            else if (Mathf.Abs(moveInput.z) > deadZone)
+
+            // --- Audio logic ---
+            if (walkingSound != null && !audioSource.isPlaying)
             {
-                if (moveInput.z > 0)
-                {
-                    sr.sprite = backSprite;
-                }
-                else
-                {
-                    sr.sprite = frontSprite;
-                }
+                audioSource.clip = walkingSound;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            // If not moving, stop the sound
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
             }
         }
     }

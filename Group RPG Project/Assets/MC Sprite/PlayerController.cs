@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
+
     [Tooltip("The movement speed of the character.")]
     public float speed = 5.0f;
 
@@ -21,6 +22,15 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Sprite to display when moving right.")]
     public Sprite rightSprite;
 
+
+    [Header("Walking Sprites")]
+    public Sprite[] walkUpSprites;
+    public Sprite[] walkDownSprites;
+    public Sprite[] walkRightSprites;
+    public Sprite[] walkLeftSprites;
+
+    public float walkFrameRate = 8f;
+
     [Header("Audio")]
     [Tooltip("The sound effect for the character's footsteps.")]
     public AudioClip walkingSound;
@@ -33,12 +43,81 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     private Vector3 moveInput;
 
+    private float walkTimer = 0f;
+    private int walkFrameIndex = 0;
+
+    private Vector3 lastMoveDirection = Vector3.forward;
+
+    private Sprite[] GetWalkSprites()
+    {
+        if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.z))
+        {
+            //Left-Right
+            if (moveInput.x > 0)
+            {
+                return walkRightSprites;
+            }
+            else
+            {
+                return walkLeftSprites;
+            }
+        }
+        else
+        {
+            //Up-Down
+            if (moveInput.z > 0)
+            {
+                return walkUpSprites;
+            }
+            else
+            {
+                return walkDownSprites;
+            }
+        }
+    }
+
+    private void UpdateWalkingAnimation()
+{
+    Sprite[] currentWalkSet = null;
+
+    // Pick the correct animation set based on direction:
+    if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.z))
+    {
+        // Horizontal movement
+        currentWalkSet = moveInput.x > 0 ? walkRightSprites : walkLeftSprites;
+    }
+    else
+    {
+        // Vertical movement
+        currentWalkSet = moveInput.z > 0 ? walkUpSprites : walkDownSprites;
+    }
+
+    if (currentWalkSet == null || currentWalkSet.Length == 0)
+        return; // No animation frames assigned
+
+    // Update animation frame timing
+    walkTimer += Time.deltaTime;
+
+    if (walkTimer >= 1f / walkFrameRate)
+    {
+        walkTimer = 0f;
+        walkFrameIndex++;
+
+        if (walkFrameIndex >= currentWalkSet.Length)
+            walkFrameIndex = 0;
+
+        sr.sprite = currentWalkSet[walkFrameIndex];
+    }
+}
+
+
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponentInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
 
         if (sr == null)
         {
@@ -55,12 +134,10 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         moveInput = new Vector3(horizontalInput, 0, verticalInput);
 
-        //Animation
-        bool isMoving = moveInput.magnitude > deadZone;
-
-        animator.SetBool("IsMoving", isMoving);
-        animator.SetFloat("MoveX", horizontalInput);
-        animator.SetFloat("MoveZ", verticalInput);
+        if (moveInput.magnitude > deadZone)
+        {
+            lastMoveDirection = moveInput;
+        }
 
     }
 
@@ -77,7 +154,7 @@ public class PlayerController : MonoBehaviour
         // Handle visual and audio updates in LateUpdate
         if (isMoving)
         {
-            // --- Sprite switching logic ---
+            /** --- Sprite switching logic ---
             if (sr != null)
             {
                 if (Mathf.Abs(moveInput.x) > deadZone)
@@ -90,7 +167,11 @@ public class PlayerController : MonoBehaviour
                     if (moveInput.z > 0) sr.sprite = backSprite;
                     else sr.sprite = frontSprite;
                 }
+
+
             }
+            **/
+            lastMoveDirection = moveInput;
 
             // --- Audio logic ---
             if (walkingSound != null && !audioSource.isPlaying)
@@ -98,6 +179,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.clip = walkingSound;
                 audioSource.Play();
             }
+            UpdateWalkingAnimation();
         }
         else
         {
@@ -106,6 +188,18 @@ public class PlayerController : MonoBehaviour
             {
                 audioSource.Stop();
             }
+
+            if (Mathf.Abs(lastMoveDirection.x) > Mathf.Abs(lastMoveDirection.z))
+            {
+                sr.sprite = lastMoveDirection.x > 0 ? rightSprite : leftSprite;
+            }
+            else
+            {
+                sr.sprite = lastMoveDirection.z > 0 ? backSprite : frontSprite;
+            }
+
+            walkFrameIndex = 0;
+            walkTimer = 0f;
         }
     }
 }

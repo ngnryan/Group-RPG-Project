@@ -41,7 +41,7 @@ public class BattleManager : MonoBehaviour
 
     private void EnemyAttackAction()
     {
-        int damage = enemy.stats.attackPower;
+        int damage = enemy.stats.attackDamage;
         player.TakeDamage(damage);
 
         if (player.stats.currenthp <= 0)
@@ -58,7 +58,35 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Enemy was defeated!"); //drop loot (UI), exit battle
     }
-    private void PlayerDefeated
+    private void PlayerDefeated()
+    {
+        Debug.Log("Player lost!");
+    }
+
+    public void PlayerUseMove(MoveBase move)
+{
+    Debug.Log("Resolving move: " + move.moveName);
+
+    // Accuracy check
+    int roll = Random.Range(1, 101);
+    if (roll > move.accuracy)
+    {
+        Debug.Log("The attack missed!");
+        StartEnemyTurn();
+        return;
+    }
+
+    // Calculate damage
+    int damage = move.damage;
+
+    enemy.TakeDamage(damage);
+
+    if (enemy.GetStats().currentHP > 0)
+        StartEnemyTurn();
+    else
+        OnEnemyFainted();
+}
+
 
 
     // Update is called once per frame

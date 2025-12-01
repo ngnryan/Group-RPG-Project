@@ -7,7 +7,7 @@ public class MoveTemplate : ScriptableObject
     public int speed;
     public int accuracy;
     public int manaCost;
-    public enum MoveTypes {Fire, Water, Air, Earth, Physical};
+    public enum MoveTypes {Fire, Water, Air, Earth};
     public MoveTypes type;
     [TextArea] public string moveDescription;
 }

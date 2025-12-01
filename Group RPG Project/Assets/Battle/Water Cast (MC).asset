@@ -17,5 +17,6 @@ MonoBehaviour:
   accuracy: 100
   manaCost: 10
   type: 1
-  moveDescription: With a gust of wind, the user blasts their opponent backwards,
-    knocking the breath out of their lungs.
+  moveDescription: 'Water Cast
+
+'

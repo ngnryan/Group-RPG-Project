@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63e74fbf50f14724aee0adcefafb8c1, type: 3}
   m_Name: Earth Cast (MC)
   m_EditorClassIdentifier: Assembly-CSharp::MoveTemplate
-  attack: 0
-  speed: 0
-  accuracy: 0
-  manaCost: 0
-  type: 0
-  moveDescription: 
+  attack: 15
+  speed: 10
+  accuracy: 100
+  manaCost: 15
+  type: 3
+  moveDescription: 'Earth Cast
+
+'

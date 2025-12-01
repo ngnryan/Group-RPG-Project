@@ -17,4 +17,6 @@ MonoBehaviour:
   accuracy: 95
   manaCost: 10
   type: 0
-  moveDescription: The most basic move.
+  moveDescription: 'Fire Cast
+
+'

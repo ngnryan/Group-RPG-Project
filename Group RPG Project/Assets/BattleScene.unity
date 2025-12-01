@@ -2403,12 +2403,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a285389f2b7dc4926b15ea40e6be8446, type: 3}
   - {fileID: 21300000, guid: 044dbf833a1b64d8ba2580bdf0dc6988, type: 3}
   - {fileID: 21300000, guid: 6cd0bca921a54450bb4c205519899aa4, type: 3}
-  waterAttackFrames:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waterAttackFrames: []
   earthAttackFrames: []
   airAttackFrames: []
 --- !u!1 &1991501299

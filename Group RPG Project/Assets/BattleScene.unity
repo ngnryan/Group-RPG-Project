@@ -738,7 +738,19 @@ MonoBehaviour:
   frameRate: 0.05
   onClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1870325260}
+        m_TargetAssemblyTypeName: SpriteAnimator, Assembly-CSharp
+        m_MethodName: PlayWaterAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &455995985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1882,7 +1894,19 @@ MonoBehaviour:
   frameRate: 0.05
   onClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1870325260}
+        m_TargetAssemblyTypeName: SpriteAnimator, Assembly-CSharp
+        m_MethodName: PlayFireAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1640924542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2052,7 +2076,19 @@ MonoBehaviour:
   frameRate: 0.05
   onClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1870325260}
+        m_TargetAssemblyTypeName: SpriteAnimator, Assembly-CSharp
+        m_MethodName: PlayEarthAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1692440199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2261,7 +2297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1870325257}
   - component: {fileID: 1870325258}
-  - component: {fileID: 1870325259}
+  - component: {fileID: 1870325260}
   m_Layer: 0
   m_Name: BattleMCSprite
   m_TagString: Untagged
@@ -2342,7 +2378,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1870325259
+--- !u!114 &1870325260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2351,16 +2387,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1870325256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2062a7f59c4434887a5c4c4b0a9b5b, type: 3}
+  m_Script: {fileID: 11500000, guid: d2f4af472c8c74ac393bf42dd5fa9287, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IdleAnimation
-  animationFrames:
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteAnimator
+  framesPerSecond: 6
+  idleFrames:
   - {fileID: 21300000, guid: 00af37b25a32844e7b1e227e52ccb9a1, type: 3}
   - {fileID: 21300000, guid: 14704de6e2b1743fc9d2b644a2029dae, type: 3}
   - {fileID: 21300000, guid: 5f8dc81f947bf439ea2cd5bf42ced09d, type: 3}
   - {fileID: 21300000, guid: 154bf2429450748b9a57edc97d966e57, type: 3}
   - {fileID: 21300000, guid: f0b7c3e4ada9346b29df404d65c1c96a, type: 3}
-  frameRate: 0.19
+  fireAttackFrames:
+  - {fileID: 21300000, guid: fd858dedabfa54a9bb69db2bc8aaf3d5, type: 3}
+  - {fileID: 21300000, guid: 031df0b9a2775452a824b157bd6ae6af, type: 3}
+  - {fileID: 21300000, guid: a285389f2b7dc4926b15ea40e6be8446, type: 3}
+  - {fileID: 21300000, guid: 044dbf833a1b64d8ba2580bdf0dc6988, type: 3}
+  - {fileID: 21300000, guid: 6cd0bca921a54450bb4c205519899aa4, type: 3}
+  waterAttackFrames:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  earthAttackFrames: []
+  airAttackFrames: []
 --- !u!1 &1991501299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,7 +2667,19 @@ MonoBehaviour:
   frameRate: 0.05
   onClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1870325260}
+        m_TargetAssemblyTypeName: SpriteAnimator, Assembly-CSharp
+        m_MethodName: PlayWaterAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2029981476
 MonoBehaviour:
   m_ObjectHideFlags: 0

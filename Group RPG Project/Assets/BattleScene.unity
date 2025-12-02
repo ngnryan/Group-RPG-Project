@@ -374,6 +374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveSet
   moves:
   - {fileID: 11400000, guid: 58540a851f8d64274b42a05764899f29, type: 2}
+  - {fileID: 11400000, guid: feae32d50ada1435e8022122a7cefd3c, type: 2}
+  - {fileID: 11400000, guid: f827be532d12b4ad6b8689e74f4ff487, type: 2}
+  - {fileID: 11400000, guid: ef8a5e79d0f704e20a4637b65ecdff9c, type: 2}
 --- !u!114 &198073201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +392,7 @@ MonoBehaviour:
   health: 100
   mana: 100
   level: 100
-  speed: 50
+  speed: 5
   power: 5
 --- !u!114 &198073203
 MonoBehaviour:
@@ -1994,6 +1997,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1874928604}
+        m_TargetAssemblyTypeName: BattleLogic, Assembly-CSharp
+        m_MethodName: PlayerSelectMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: f827be532d12b4ad6b8689e74f4ff487, type: 2}
+          m_ObjectArgumentAssemblyTypeName: MoveTemplate, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1640924542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,6 +2186,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1874928604}
+        m_TargetAssemblyTypeName: BattleLogic, Assembly-CSharp
+        m_MethodName: PlayerSelectMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: feae32d50ada1435e8022122a7cefd3c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: MoveTemplate, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2418,6 +2445,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveSet
   moves:
   - {fileID: 11400000, guid: f827be532d12b4ad6b8689e74f4ff487, type: 2}
+  - {fileID: 11400000, guid: ef8a5e79d0f704e20a4637b65ecdff9c, type: 2}
+  - {fileID: 11400000, guid: feae32d50ada1435e8022122a7cefd3c, type: 2}
+  - {fileID: 11400000, guid: 58540a851f8d64274b42a05764899f29, type: 2}
 --- !u!114 &1811566699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2872,6 +2902,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1874928604}
+        m_TargetAssemblyTypeName: BattleLogic, Assembly-CSharp
+        m_MethodName: PlayerSelectMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: ef8a5e79d0f704e20a4637b65ecdff9c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: MoveTemplate, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

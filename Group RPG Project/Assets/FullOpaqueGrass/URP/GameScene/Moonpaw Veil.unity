@@ -6149,8 +6149,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1353078163}
+  - component: {fileID: 1353078164}
   m_Layer: 0
-  m_Name: Settings
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6175,6 +6176,22 @@ Transform:
   - {fileID: 1425998381}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1353078164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353078162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ac840b81a4e4049b3bdc9234f93d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogManager
+  defaultFogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  defaultFogDensity: 0.002
+  underwaterFogColor: {r: 0.1, g: 0.3, b: 0.4, a: 1}
+  underwaterFogDensity: 0.04
 --- !u!1001 &1357375159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7567,6 +7584,10 @@ PrefabInstance:
     - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_LocalScale.x
       value: 24.558308
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_LocalScale.z

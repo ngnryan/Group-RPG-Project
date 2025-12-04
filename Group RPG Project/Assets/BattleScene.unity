@@ -393,7 +393,7 @@ MonoBehaviour:
   mana: 100
   level: 100
   speed: 5
-  power: 5
+  power: 3
 --- !u!114 &198073203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2460,11 +2460,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d90aa9835c9f4b21b642c21dc12e9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  health: 50
+  health: 100
   mana: 5
   level: 1
   speed: 10
-  power: 1
+  power: 3
 --- !u!114 &1811566700
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12064,6 +12064,30 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c60150c207a6449488d67ea44cea59a5, type: 3}
   walkFrameRate: 8
   walkingSound: {fileID: 8300000, guid: 21c1ff72c54db40eba4a5def029e3c93, type: 3}
+  lostBackSprite: {fileID: 21300000, guid: 1b806b5c358a544f799cf552db0d133a, type: 3}
+  lostFrontSprite: {fileID: 21300000, guid: 10a58af4f319845d29e63dfa54534002, type: 3}
+  lostLeftSprite: {fileID: 21300000, guid: 7b1a656e4f08b48f7a73df292c74e19d, type: 3}
+  lostRightSprite: {fileID: 21300000, guid: a5f816607e2fa4d5dba49ae15868a9c1, type: 3}
+  lostWalkUpSprites:
+  - {fileID: 21300000, guid: f4ff0cd6f32c847cc827383f947e4a31, type: 3}
+  - {fileID: 21300000, guid: 5da5e59103a1d4ebc8f2ecde409967a0, type: 3}
+  - {fileID: 21300000, guid: 9bb3cc3aa2ebb4bb88d040522220e508, type: 3}
+  - {fileID: 21300000, guid: 139be021972ff4fb78ff8b8bde8283e1, type: 3}
+  lostWalkDownSprites:
+  - {fileID: 21300000, guid: ddc38c20e80664231b00aa89062bf241, type: 3}
+  - {fileID: 21300000, guid: e9c8991d9cb754c069fd9d60ec4dd4e9, type: 3}
+  - {fileID: 21300000, guid: 2b64726a18071458c91a8e21f394dcb8, type: 3}
+  - {fileID: 21300000, guid: d3afd3da41e4f4d17b3a987943ad7eec, type: 3}
+  lostWalkRightSprites:
+  - {fileID: 21300000, guid: 37c955e1114e84ef79455b5c1f11e6a7, type: 3}
+  - {fileID: 21300000, guid: c6567f7ac51214f41bc8e3f8907e6b16, type: 3}
+  - {fileID: 21300000, guid: 046c87d4a086b4e5881da04b54e49548, type: 3}
+  - {fileID: 21300000, guid: 3d9dfece40366441893733bb8e89f086, type: 3}
+  lostWalkLeftSprites:
+  - {fileID: 21300000, guid: e40268d576f7f4e4db91740c0152757b, type: 3}
+  - {fileID: 21300000, guid: fb7cd3949d35741ee8e1a6de51a02930, type: 3}
+  - {fileID: 21300000, guid: 7bd5b1c1c1bad4b87b131d4d97b11504, type: 3}
+  - {fileID: 21300000, guid: ab2678d409eca4063bcbaa31378aee4b, type: 3}
 --- !u!1001 &1237393207
 PrefabInstance:
   m_ObjectHideFlags: 0

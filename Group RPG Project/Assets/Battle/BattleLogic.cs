@@ -93,6 +93,10 @@ public class BattleLogic : MonoBehaviour
             losingScreen.SetActive(true);
             losingScreen.transform.SetAsLastSibling();
 
+            // Set flag to indicate battle was lost
+            PlayerPrefs.SetInt("BattleLost", 1);
+            PlayerPrefs.Save();
+
             yield return new WaitForSeconds(3f);
 
             SceneManager.LoadScene("MainScene");

@@ -3310,15 +3310,23 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f8dc81f947bf439ea2cd5bf42ced09d, type: 3}
   - {fileID: 21300000, guid: 154bf2429450748b9a57edc97d966e57, type: 3}
   - {fileID: 21300000, guid: f0b7c3e4ada9346b29df404d65c1c96a, type: 3}
-  fireAttackFrames:
+  lostIdleFrames:
+  - {fileID: 21300000, guid: 12c8ea00e8768439d83372ab1c5158fc, type: 3}
+  - {fileID: 21300000, guid: 96dbd84d1e8ef49a289c3dc7e9091c91, type: 3}
+  - {fileID: 21300000, guid: aa86edc0ea3ac4acea05890213b4157e, type: 3}
+  - {fileID: 21300000, guid: 8afc87991576940568df9fc28dc54fc1, type: 3}
+  - {fileID: 21300000, guid: ca553bd1e2cc34ee09542e2e7fa63e74, type: 3}
+  attackFrames:
   - {fileID: 21300000, guid: fd858dedabfa54a9bb69db2bc8aaf3d5, type: 3}
   - {fileID: 21300000, guid: 031df0b9a2775452a824b157bd6ae6af, type: 3}
   - {fileID: 21300000, guid: a285389f2b7dc4926b15ea40e6be8446, type: 3}
   - {fileID: 21300000, guid: 044dbf833a1b64d8ba2580bdf0dc6988, type: 3}
   - {fileID: 21300000, guid: 6cd0bca921a54450bb4c205519899aa4, type: 3}
-  waterAttackFrames: []
-  earthAttackFrames: []
-  airAttackFrames: []
+  lostAttackFrames:
+  - {fileID: 21300000, guid: ffecc66fc900d42c2ab527a75cb8ea85, type: 3}
+  - {fileID: 21300000, guid: 4e1cc2308287547a4ab47152b83707ac, type: 3}
+  - {fileID: 21300000, guid: 21e1e6673ba2540e09fa9e3d8e25c697, type: 3}
+  - {fileID: 21300000, guid: c3e37d86ed41b46079dcdd1f6b536e23, type: 3}
 --- !u!1 &1874928603
 GameObject:
   m_ObjectHideFlags: 0

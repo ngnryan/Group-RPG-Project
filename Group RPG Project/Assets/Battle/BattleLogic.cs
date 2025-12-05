@@ -29,7 +29,7 @@ public class BattleLogic : MonoBehaviour
     private void Start()
     {
         losingScreen.SetActive(false);
-        //DisableAllCastUI();
+        DisableAllCastUI();
     }
 
     private void DisableAllCastUI()

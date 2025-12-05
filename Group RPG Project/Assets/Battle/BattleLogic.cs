@@ -14,13 +14,13 @@ public class BattleLogic : MonoBehaviour
     public GameObject losingScreen;
 
 
-    [Header("Player Cast UI")]
+    [Header("PlayerCastUI")]
     public GameObject playerCastEarth;
     public GameObject playerCastFire;
     public GameObject playerCastWater;
     public GameObject playerCastWind;
 
-    [Header("Enemy Cast UI")]
+    [Header("EnemyCastUI")]
     public GameObject enemyCastEarth;
     public GameObject enemyCastFire;
     public GameObject enemyCastWater;
@@ -80,15 +80,12 @@ public class BattleLogic : MonoBehaviour
 
         if (player.characterStats.health <= 0)
         {
-            // Show losing UI
             losingScreen.SetActive(true);
             losingScreen.transform.SetAsLastSibling();
 
-            // Wait so the losing UI stays visible for a moment
             yield return new WaitForSeconds(3f);
 
-            // Load the open-world scene
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("Moonpaw Veil");
             yield break;
         }
 

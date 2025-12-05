@@ -26,6 +26,11 @@ public class BattleLogic : MonoBehaviour
     public GameObject enemyCastWater;
     public GameObject enemyCastWind;
 
+    [Header("VFX Spawn Points")]
+    public Transform playerVFXPoint;
+    public Transform enemyVFXPoint;
+
+
     private void Start()
     {
         losingScreen.SetActive(false);
@@ -56,6 +61,7 @@ public class BattleLogic : MonoBehaviour
 
         // player move
         ShowPlayerCastUI(move);
+        SpawnSpellVFX(move,true);
         ApplyMove(player, enemy, move);
         enemyHearts.UpdateHearts(enemy.characterStats.health);
 
@@ -68,12 +74,16 @@ public class BattleLogic : MonoBehaviour
             yield break;
         }
 
-        //enemy move
+       //enemy move
         MoveTemplate strongest = GetStrongestMove(enemy);
         ShowEnemyCastUI(strongest);
-        ApplyMove(enemy, player, strongest);
 
+
+        SpawnSpellVFX(strongest, false);
+
+        ApplyMove(enemy, player, strongest);
         playerHearts.UpdateHearts(player.characterStats.health);
+
 
         yield return new WaitForSeconds(1.2f);
         DisableAllCastUI();
@@ -137,25 +147,45 @@ public class BattleLogic : MonoBehaviour
 
 
     private void ShowEnemyCastUI(MoveTemplate move)
-{
-    switch (move.type)
     {
-        case MoveTemplate.MoveTypes.Earth:
-            enemyCastEarth.SetActive(true);
-            break;
+        switch (move.type)
+        {
+            case MoveTemplate.MoveTypes.Earth:
+                enemyCastEarth.SetActive(true);
+                break;
 
-        case MoveTemplate.MoveTypes.Fire:
-            enemyCastFire.SetActive(true);
-            break;
+            case MoveTemplate.MoveTypes.Fire:
+                enemyCastFire.SetActive(true);
+                break;
 
-        case MoveTemplate.MoveTypes.Water:
-            enemyCastWater.SetActive(true);
-            break;
+            case MoveTemplate.MoveTypes.Water:
+                enemyCastWater.SetActive(true);
+                break;
 
-        case MoveTemplate.MoveTypes.Air:
-            enemyCastWind.SetActive(true);
-            break;
+            case MoveTemplate.MoveTypes.Air:
+                enemyCastWind.SetActive(true);
+                break;
+        }
     }
-}
+
+    private void SpawnSpellVFX(MoveTemplate move, bool isPlayer)
+    {
+        GameObject prefab = SpellVFXDatabase.Instance.GetVFX(move.type, isPlayer);
+        if (!prefab) return;
+
+        Transform spawnPoint = isPlayer ? playerVFXPoint : enemyVFXPoint;
+
+        Quaternion rotation = isPlayer
+            ? Quaternion.Euler(0, 0, 0)       // shoot right
+            : Quaternion.Euler(0, 180, 0);    // shoot left
+
+        GameObject vfx = Instantiate(prefab, spawnPoint.position, rotation);
+
+        Destroy(vfx, 3f);
+
+    }
+
+
+
 
 }

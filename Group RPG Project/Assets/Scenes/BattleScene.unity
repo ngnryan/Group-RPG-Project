@@ -443,7 +443,7 @@ Transform:
   m_GameObject: {fileID: 198073198}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.20711823, z: -0, w: 0.97831595}
-  m_LocalPosition: {x: 0.59, y: 0, z: -2.08}
+  m_LocalPosition: {x: 0.59, y: -0.32, z: -2.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1430,7 +1430,7 @@ Transform:
   m_GameObject: {fileID: 699920898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.61, z: 0}
+  m_LocalPosition: {x: 0, y: 1.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2422,13 +2422,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4e0f37f2d54443b9b0e04a28e246ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  fireVFX: {fileID: 2379924841332722358, guid: eaef460a7d85414885436061804a60b8, type: 3}
-  waterVFX: {fileID: 341848999425213704, guid: becdfb70f80040ffaea23ca8dd7d4833, type: 3}
-  airVFX: {fileID: 6755843483869678136, guid: 91f49d0229924edebe1d55f67a1d8765, type: 3}
+  fireVFX: {fileID: 3809998876931629212, guid: f7807026e75c48dda4c9c2adb803c304, type: 3}
+  waterVFX: {fileID: 1761242518713448578, guid: d3abcca2f5494135bbe915129a38172e, type: 3}
+  airVFX: {fileID: 5476696324718210492, guid: 85b4ee0c8ca7420a9aa94e8fff0543cb, type: 3}
   earthVFX: {fileID: 144648182668696205, guid: 09c850e94f174303b150783c81dedf05, type: 3}
-  enemyFireVFX: {fileID: 2379924841332722358, guid: eaef460a7d85414885436061804a60b8, type: 3}
-  enemyWaterVFX: {fileID: 341848999425213704, guid: becdfb70f80040ffaea23ca8dd7d4833, type: 3}
-  enemyAirVFX: {fileID: 6755843483869678136, guid: 91f49d0229924edebe1d55f67a1d8765, type: 3}
+  enemyFireVFX: {fileID: 3809998876931629212, guid: f7807026e75c48dda4c9c2adb803c304, type: 3}
+  enemyWaterVFX: {fileID: 1761242518713448578, guid: d3abcca2f5494135bbe915129a38172e, type: 3}
+  enemyAirVFX: {fileID: 5476696324718210492, guid: 85b4ee0c8ca7420a9aa94e8fff0543cb, type: 3}
   enemyEarthVFX: {fileID: 144648182668696205, guid: 09c850e94f174303b150783c81dedf05, type: 3}
 --- !u!4 &1354816012
 Transform:
@@ -3145,7 +3145,7 @@ Transform:
   m_GameObject: {fileID: 1811566696}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.72, y: -0, z: -0.88}
+  m_LocalPosition: {x: -2.72, y: 0.24, z: -0.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3369,8 +3369,8 @@ MonoBehaviour:
   enemyCastFire: {fileID: 2043786372}
   enemyCastWater: {fileID: 450191774}
   enemyCastWind: {fileID: 602136954}
-  playerVFXPoint: {fileID: 1811566697}
-  enemyVFXPoint: {fileID: 198073199}
+  playerVFXPoint: {fileID: 198073199}
+  enemyVFXPoint: {fileID: 1811566697}
 --- !u!4 &1874928605
 Transform:
   m_ObjectHideFlags: 0

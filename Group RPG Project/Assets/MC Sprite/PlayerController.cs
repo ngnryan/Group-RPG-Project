@@ -35,6 +35,16 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The sound effect for the character's footsteps.")]
     public AudioClip walkingSound;
 
+    [Header("Lost Sprites")]
+    public Sprite lostBackSprite;
+    public Sprite lostFrontSprite;
+    public Sprite lostLeftSprite;
+    public Sprite lostRightSprite;
+    public Sprite[] lostWalkUpSprites;
+    public Sprite[] lostWalkDownSprites;
+    public Sprite[] lostWalkRightSprites;
+    public Sprite[] lostWalkLeftSprites;
+
     private Animator animator;
 
     private const float deadZone = 0.1f;
@@ -47,6 +57,23 @@ public class PlayerController : MonoBehaviour
     private int walkFrameIndex = 0;
 
     private Vector3 lastMoveDirection = Vector3.forward;
+
+    private void CheckForLostState()
+    {
+        if (PlayerPrefs.GetInt("BattleLost", 0) == 1)
+        {
+            // Swap to lost sprites if they are assigned
+            if (lostBackSprite != null) backSprite = lostBackSprite;
+            if (lostFrontSprite != null) frontSprite = lostFrontSprite;
+            if (lostLeftSprite != null) leftSprite = lostLeftSprite;
+            if (lostRightSprite != null) rightSprite = lostRightSprite;
+
+            if (lostWalkUpSprites != null && lostWalkUpSprites.Length > 0) walkUpSprites = lostWalkUpSprites;
+            if (lostWalkDownSprites != null && lostWalkDownSprites.Length > 0) walkDownSprites = lostWalkDownSprites;
+            if (lostWalkRightSprites != null && lostWalkRightSprites.Length > 0) walkRightSprites = lostWalkRightSprites;
+            if (lostWalkLeftSprites != null && lostWalkLeftSprites.Length > 0) walkLeftSprites = lostWalkLeftSprites;
+        }
+    }
 
     private Sprite[] GetWalkSprites()
     {
@@ -125,6 +152,8 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+        
+        CheckForLostState();
     }
 
     void Update()

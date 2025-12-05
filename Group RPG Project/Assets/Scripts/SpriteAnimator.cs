@@ -12,12 +12,14 @@ public class SpriteAnimator : MonoBehaviour
 
     [Header("Idle Animation")]
     public Sprite[] idleFrames;
+    public Sprite[] lostIdleFrames;
 
-    [Header("Attack Animation Frames")]
-    public Sprite[] fireAttackFrames;
-    public Sprite[] waterAttackFrames;
-    public Sprite[] earthAttackFrames;
-    public Sprite[] airAttackFrames;
+    [Header("Attack Animation")]
+    public Sprite[] attackFrames;
+    public Sprite[] lostAttackFrames;
+
+    private Sprite[] currentIdleFrames;
+    private Sprite[] currentAttackFrames;
 
     void Awake()
     {
@@ -26,6 +28,17 @@ public class SpriteAnimator : MonoBehaviour
 
     void Start()
     {
+        // Default to normal frames
+        currentIdleFrames = idleFrames;
+        currentAttackFrames = attackFrames;
+
+        // Check for Lost State
+        if (PlayerPrefs.GetInt("BattleLost", 0) == 1)
+        {
+            if (lostIdleFrames != null && lostIdleFrames.Length > 0) currentIdleFrames = lostIdleFrames;
+            if (lostAttackFrames != null && lostAttackFrames.Length > 0) currentAttackFrames = lostAttackFrames;
+        }
+
         // Start the idle animation initially
         PlayIdle();
     }
@@ -34,22 +47,22 @@ public class SpriteAnimator : MonoBehaviour
 
     public void PlayFireAttack()
     {
-        PlayAttack(fireAttackFrames);
+        PlayAttack(currentAttackFrames);
     }
 
     public void PlayWaterAttack()
     {
-        PlayAttack(waterAttackFrames);
+        PlayAttack(currentAttackFrames);
     }
 
     public void PlayEarthAttack()
     {
-        PlayAttack(earthAttackFrames);
+        PlayAttack(currentAttackFrames);
     }
 
     public void PlayAirAttack()
     {
-        PlayAttack(airAttackFrames);
+        PlayAttack(currentAttackFrames);
     }
 
     // --- Animation Control ---
@@ -57,9 +70,9 @@ public class SpriteAnimator : MonoBehaviour
     private void PlayIdle()
     {
         // Only start if there are idle frames
-        if (idleFrames == null || idleFrames.Length == 0) return;
+        if (currentIdleFrames == null || currentIdleFrames.Length == 0) return;
         
-        StartNewAnimation(Animate(idleFrames, true));
+        StartNewAnimation(Animate(currentIdleFrames, true));
     }
 
     private void PlayAttack(Sprite[] attackFrames)

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class BattleLogic : MonoBehaviour
 {
@@ -78,10 +80,18 @@ public class BattleLogic : MonoBehaviour
 
         if (player.characterStats.health <= 0)
         {
+            // Show losing UI
             losingScreen.SetActive(true);
             losingScreen.transform.SetAsLastSibling();
+
+            // Wait so the losing UI stays visible for a moment
+            yield return new WaitForSeconds(3f);
+
+            // Load the open-world scene
+            SceneManager.LoadScene("MainScene");
             yield break;
         }
+
     }
 
     private MoveTemplate GetStrongestMove(BattleState target)

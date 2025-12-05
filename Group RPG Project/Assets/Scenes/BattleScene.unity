@@ -725,7 +725,7 @@ Transform:
   m_GameObject: {fileID: 394443036}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: 0.91, z: -1.97}
+  m_LocalPosition: {x: 0.49, y: 0.48, z: -1.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1550,7 +1550,7 @@ Transform:
   m_GameObject: {fileID: 745163838}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2, y: 1.1, z: -1.27}
+  m_LocalPosition: {x: -2.7, y: 0.9, z: -1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2487,11 +2487,11 @@ MonoBehaviour:
   fireVFX: {fileID: 3809998876931629212, guid: f7807026e75c48dda4c9c2adb803c304, type: 3}
   waterVFX: {fileID: 1761242518713448578, guid: d3abcca2f5494135bbe915129a38172e, type: 3}
   airVFX: {fileID: 5476696324718210492, guid: 85b4ee0c8ca7420a9aa94e8fff0543cb, type: 3}
-  earthVFX: {fileID: 144648182668696205, guid: 09c850e94f174303b150783c81dedf05, type: 3}
+  earthVFX: {fileID: 517170533460803855, guid: 6e70e8e518554b33b4fe2d8f418b411c, type: 3}
   enemyFireVFX: {fileID: 3809998876931629212, guid: f7807026e75c48dda4c9c2adb803c304, type: 3}
   enemyWaterVFX: {fileID: 1761242518713448578, guid: d3abcca2f5494135bbe915129a38172e, type: 3}
   enemyAirVFX: {fileID: 5476696324718210492, guid: 85b4ee0c8ca7420a9aa94e8fff0543cb, type: 3}
-  enemyEarthVFX: {fileID: 144648182668696205, guid: 09c850e94f174303b150783c81dedf05, type: 3}
+  enemyEarthVFX: {fileID: 517170533460803855, guid: 6e70e8e518554b33b4fe2d8f418b411c, type: 3}
 --- !u!4 &1354816012
 Transform:
   m_ObjectHideFlags: 0

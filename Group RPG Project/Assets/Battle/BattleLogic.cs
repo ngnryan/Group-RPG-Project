@@ -95,7 +95,7 @@ public class BattleLogic : MonoBehaviour
 
             yield return new WaitForSeconds(3f);
 
-            SceneManager.LoadScene("Moonpaw Veil");
+            SceneManager.LoadScene("MainScene");
             yield break;
         }
 

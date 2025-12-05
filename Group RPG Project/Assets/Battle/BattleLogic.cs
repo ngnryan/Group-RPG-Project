@@ -9,6 +9,40 @@ public class BattleLogic : MonoBehaviour
     public HeartsUI playerHearts;
     public HeartsUI enemyHearts;
 
+    public GameObject losingScreen;
+
+
+    [Header("Player Cast UI")]
+    public GameObject playerCastEarth;
+    public GameObject playerCastFire;
+    public GameObject playerCastWater;
+    public GameObject playerCastWind;
+
+    [Header("Enemy Cast UI")]
+    public GameObject enemyCastEarth;
+    public GameObject enemyCastFire;
+    public GameObject enemyCastWater;
+    public GameObject enemyCastWind;
+
+    private void Start()
+    {
+        losingScreen.SetActive(false);
+        //DisableAllCastUI();
+    }
+
+    private void DisableAllCastUI()
+    {
+        playerCastEarth.SetActive(false);
+        playerCastFire.SetActive(false);
+        playerCastWater.SetActive(false);
+        playerCastWind.SetActive(false);
+
+        enemyCastEarth.SetActive(false);
+        enemyCastFire.SetActive(false);
+        enemyCastWater.SetActive(false);
+        enemyCastWind.SetActive(false);
+    }
+
     public void PlayerSelectMove(MoveTemplate move)
     {
         StartCoroutine(PlayerMoveFlow(move));
@@ -16,38 +50,38 @@ public class BattleLogic : MonoBehaviour
 
     private IEnumerator PlayerMoveFlow(MoveTemplate move)
     {
-        if (move == null)
-        {
-            Debug.LogWarning("Player selected a NULL move!");
-            yield break;
-        }
+        DisableAllCastUI();
 
-
-        ShowMessage($"Player used {move.moveDescription}!");
+        // player move
+        ShowPlayerCastUI(move);
         ApplyMove(player, enemy, move);
         enemyHearts.UpdateHearts(enemy.characterStats.health);
 
+        yield return new WaitForSeconds(1.2f);
+        DisableAllCastUI();
+
         if (enemy.characterStats.health <= 0)
         {
-            ShowMessage("Enemy fainted! You win!");
+            //enemy dead
             yield break;
         }
 
-        yield return new WaitForSeconds(1f);
-
+        //enemy move
         MoveTemplate strongest = GetStrongestMove(enemy);
-
-        ShowMessage($"Enemy used {strongest.moveDescription}!");
+        ShowEnemyCastUI(strongest);
         ApplyMove(enemy, player, strongest);
+
         playerHearts.UpdateHearts(player.characterStats.health);
+
+        yield return new WaitForSeconds(1.2f);
+        DisableAllCastUI();
 
         if (player.characterStats.health <= 0)
         {
-            ShowMessage("You fainted! Enemy wins!");
+            losingScreen.SetActive(true);
+            losingScreen.transform.SetAsLastSibling();
             yield break;
         }
-
-        yield return new WaitForSeconds(1f);
     }
 
     private MoveTemplate GetStrongestMove(BattleState target)
@@ -72,8 +106,49 @@ public class BattleLogic : MonoBehaviour
             defender.characterStats.health = 0;
     }
 
-    private void ShowMessage(string msg)
+    private void ShowPlayerCastUI(MoveTemplate move)
+{
+    switch (move.type)
     {
-        Debug.Log(msg);
+        case MoveTemplate.MoveTypes.Earth:
+            playerCastEarth.SetActive(true);
+            break;
+
+        case MoveTemplate.MoveTypes.Fire:
+            playerCastFire.SetActive(true);
+            break;
+
+        case MoveTemplate.MoveTypes.Water:
+            playerCastWater.SetActive(true);
+            break;
+
+        case MoveTemplate.MoveTypes.Air:
+            playerCastWind.SetActive(true);
+            break;
     }
+}
+
+
+    private void ShowEnemyCastUI(MoveTemplate move)
+{
+    switch (move.type)
+    {
+        case MoveTemplate.MoveTypes.Earth:
+            enemyCastEarth.SetActive(true);
+            break;
+
+        case MoveTemplate.MoveTypes.Fire:
+            enemyCastFire.SetActive(true);
+            break;
+
+        case MoveTemplate.MoveTypes.Water:
+            enemyCastWater.SetActive(true);
+            break;
+
+        case MoveTemplate.MoveTypes.Air:
+            enemyCastWind.SetActive(true);
+            break;
+    }
+}
+
 }

@@ -93,13 +93,13 @@ public class BattleLogic : MonoBehaviour
             losingScreen.SetActive(true);
             losingScreen.transform.SetAsLastSibling();
 
-            // Set flag to indicate battle was lost
+
             PlayerPrefs.SetInt("BattleLost", 1);
             PlayerPrefs.Save();
 
             yield return new WaitForSeconds(3f);
 
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("Moonpaw Veil");
             yield break;
         }
 
@@ -180,8 +180,8 @@ public class BattleLogic : MonoBehaviour
         Transform spawnPoint = isPlayer ? playerVFXPoint : enemyVFXPoint;
 
         Quaternion rotation = isPlayer
-            ? Quaternion.Euler(0, 0, 0)       // shoot right
-            : Quaternion.Euler(0, 180, 0);    // shoot left
+            ? Quaternion.Euler(0, 90, 0) //hit enemy
+            : Quaternion.Euler(0, -90, 0); //hit player
 
         GameObject vfx = Instantiate(prefab, spawnPoint.position, rotation);
 

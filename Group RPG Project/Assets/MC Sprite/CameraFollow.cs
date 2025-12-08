@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;     // player / sprite
-    public Vector3 offset;       // distance between camera and player
+    public Transform target;     // MC
+    public Vector3 offset;       // distance between camera and MC
     public float smoothTime = 0.2f;
 
     private Vector3 velocity = Vector3.zero;
@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (target == null) return;
 
-        // Smooth follow
+        // smooth follow mechanic
         Vector3 targetPos = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
     }

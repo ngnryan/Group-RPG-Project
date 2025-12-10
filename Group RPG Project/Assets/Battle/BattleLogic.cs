@@ -12,6 +12,7 @@ public class BattleLogic : MonoBehaviour
     public HeartsUI enemyHearts;
 
     public GameObject losingScreen;
+    public GameObject winningScreen;
 
 
     [Header("PlayerCastUI")]
@@ -34,6 +35,7 @@ public class BattleLogic : MonoBehaviour
     private void Start()
     {
         losingScreen.SetActive(false);
+        winningScreen.SetActive(false);
         DisableAllCastUI();
     }
 
@@ -70,7 +72,16 @@ public class BattleLogic : MonoBehaviour
 
         if (enemy.characterStats.health <= 0)
         {
-            //enemy dead
+            winningScreen.SetActive(true);
+            winningScreen.transform.SetAsLastSibling();
+
+
+            PlayerPrefs.SetInt("BattleWon", 1);
+            PlayerPrefs.Save();
+
+            yield return new WaitForSeconds(3f);
+
+            SceneManager.LoadScene("Moonpaw Veil");
             yield break;
         }
 

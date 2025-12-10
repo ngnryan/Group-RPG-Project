@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 198073201}
   - component: {fileID: 198073203}
   m_Layer: 0
-  m_Name: WaterSlime
+  m_Name: GrassSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveSet
   moves:
-  - {fileID: 11400000, guid: 58540a851f8d64274b42a05764899f29, type: 2}
+  - {fileID: 11400000, guid: feae32d50ada1435e8022122a7cefd3c, type: 2}
 --- !u!114 &198073201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,7 +1444,7 @@ GameObject:
   - component: {fileID: 699920900}
   - component: {fileID: 699920901}
   m_Layer: 0
-  m_Name: WaterSlimeSprite
+  m_Name: GrassSlimeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1512,7 +1512,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 10931d6b508014047813bdf01c5b9ea8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 877b33d143ae14d45b614a2430040420, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1537,15 +1537,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpriteAnimator
   framesPerSecond: 8
   idleFrames:
-  - {fileID: 21300000, guid: 8f40bd1914b114b6abd4faf746af5112, type: 3}
-  - {fileID: 21300000, guid: bd80bd3f1a97f46e9963bedec2eb767a, type: 3}
-  - {fileID: 21300000, guid: 10931d6b508014047813bdf01c5b9ea8, type: 3}
-  - {fileID: 21300000, guid: 6986cd1d1e68d4d3a99de6607d7da62e, type: 3}
-  - {fileID: 21300000, guid: c574cac85584249b69e3fcc5d8d2da25, type: 3}
-  - {fileID: 21300000, guid: 0732439ecc43b430c97913b6699b34ed, type: 3}
-  - {fileID: 21300000, guid: e1474dc90664b4dd8a59a823e41333f8, type: 3}
-  - {fileID: 21300000, guid: 6471b78fa485c44248a1ba0f0a803dbf, type: 3}
-  - {fileID: 21300000, guid: 6471b78fa485c44248a1ba0f0a803dbf, type: 3}
+  - {fileID: 21300000, guid: bd6e618647f4541ed9429524f6adaf19, type: 3}
+  - {fileID: 21300000, guid: 877b33d143ae14d45b614a2430040420, type: 3}
+  - {fileID: 21300000, guid: feacac302dc8248df8f58ed4ea2d4de2, type: 3}
+  - {fileID: 21300000, guid: 95ab0602776164856ae3f4a7126fca04, type: 3}
+  - {fileID: 21300000, guid: 01d8eb8fe7d144c1a9ca14a7f9ac2920, type: 3}
+  - {fileID: 21300000, guid: 0f1e244e9f43e4493878b03c1b696b55, type: 3}
+  - {fileID: 21300000, guid: 6af8da0333b454aadb719af7e88a62c3, type: 3}
+  - {fileID: 21300000, guid: 104ce066bd94040baa54344d1d02f7a9, type: 3}
+  - {fileID: 21300000, guid: b752f538560fb4802b1cde4bdd7da83f, type: 3}
   lostIdleFrames: []
   attackFrames: []
   lostAttackFrames: []

@@ -14,6 +14,9 @@ public class BattleLogic : MonoBehaviour
     public GameObject losingScreen;
     public GameObject winningScreen;
 
+    public GameObject finalEncounterText;
+
+
 
     [Header("PlayerCastUI")]
     public GameObject playerCastEarth;
@@ -37,7 +40,11 @@ public class BattleLogic : MonoBehaviour
         losingScreen.SetActive(false);
         winningScreen.SetActive(false);
         DisableAllCastUI();
+
+        if (finalEncounterText != null)
+            StartCoroutine(ShowFinalEncounterText());
     }
+
 
     private void DisableAllCastUI()
     {
@@ -195,6 +202,16 @@ public class BattleLogic : MonoBehaviour
         Destroy(vfx, 3f);
 
     }
+
+    private IEnumerator ShowFinalEncounterText()
+    {
+        finalEncounterText.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        finalEncounterText.SetActive(false);
+    }
+
 
 
 

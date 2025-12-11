@@ -12,6 +12,10 @@ public class BattleLogic : MonoBehaviour
     public HeartsUI enemyHearts;
 
     public GameObject losingScreen;
+    public GameObject winningScreen;
+
+    public GameObject finalEncounterText;
+
 
 
     [Header("PlayerCastUI")]
@@ -34,8 +38,13 @@ public class BattleLogic : MonoBehaviour
     private void Start()
     {
         losingScreen.SetActive(false);
+        winningScreen.SetActive(false);
         DisableAllCastUI();
+
+        if (finalEncounterText != null)
+            StartCoroutine(ShowFinalEncounterText());
     }
+
 
     private void DisableAllCastUI()
     {
@@ -70,12 +79,22 @@ public class BattleLogic : MonoBehaviour
 
         if (enemy.characterStats.health <= 0)
         {
-            //enemy dead
+            winningScreen.SetActive(true);
+            winningScreen.transform.SetAsLastSibling();
+
+            player.characterStats.level = 10;
+
+            PlayerPrefs.SetInt("BattleWon", 1);
+            PlayerPrefs.Save();
+
+            yield return new WaitForSeconds(3f);
+
+            SceneManager.LoadScene("Moonpaw Veil");
             yield break;
         }
 
        //enemy move
-        MoveTemplate strongest = GetStrongestMove(enemy);
+        MoveTemplate strongest = GetRandomMove(enemy);
         ShowEnemyCastUI(strongest);
 
 
@@ -105,18 +124,13 @@ public class BattleLogic : MonoBehaviour
 
     }
 
-    private MoveTemplate GetStrongestMove(BattleState target)
+    private MoveTemplate GetRandomMove(BattleState target)
     {
-        MoveTemplate best = target.moveSet.moves[0];
-
-        foreach (var move in target.moveSet.moves)
-        {
-            if (move.attack > best.attack)
-                best = move;
-        }
-
-        return best;
+        var moves = target.moveSet.moves;
+        int index = Random.Range(0, moves.Count);
+        return moves[index];
     }
+
 
     private void ApplyMove(BattleState attacker, BattleState defender, MoveTemplate move)
     {
@@ -188,6 +202,16 @@ public class BattleLogic : MonoBehaviour
         Destroy(vfx, 3f);
 
     }
+
+    private IEnumerator ShowFinalEncounterText()
+    {
+        finalEncounterText.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        finalEncounterText.SetActive(false);
+    }
+
 
 
 

@@ -86,7 +86,7 @@ public class BattleLogic : MonoBehaviour
         }
 
        //enemy move
-        MoveTemplate strongest = GetStrongestMove(enemy);
+        MoveTemplate strongest = GetRandomMove(enemy);
         ShowEnemyCastUI(strongest);
 
 
@@ -116,18 +116,13 @@ public class BattleLogic : MonoBehaviour
 
     }
 
-    private MoveTemplate GetStrongestMove(BattleState target)
+    private MoveTemplate GetRandomMove(BattleState target)
     {
-        MoveTemplate best = target.moveSet.moves[0];
-
-        foreach (var move in target.moveSet.moves)
-        {
-            if (move.attack > best.attack)
-                best = move;
-        }
-
-        return best;
+        var moves = target.moveSet.moves;
+        int index = Random.Range(0, moves.Count);
+        return moves[index];
     }
+
 
     private void ApplyMove(BattleState attacker, BattleState defender, MoveTemplate move)
     {

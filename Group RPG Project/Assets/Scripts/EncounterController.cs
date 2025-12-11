@@ -12,6 +12,16 @@ public class EncounterController : MonoBehaviour
     [Tooltip("The Player's Transform. If empty, the script will try to find it automatically.")]
     public Transform playerTransform;
 
+    [Header("Conditional Settings")]
+    [Tooltip("If true, checks valid PlayerPref key to alternate scene.")]
+    public bool useConditionalScene = false;
+
+    [Tooltip("The alternate scene to load if the condition is met.")]
+    public string alternateBattleSceneName = "BattleScene_Revisit";
+
+    [Tooltip("The PlayerPref key to check. Default is 'LostToEvilCatMaster'.")]
+    public string conditionKey = "LostToEvilCatMaster";
+
     void Start()
     {
         // If playerTransform is already assigned in the inspector, we don't need to find it.
@@ -53,14 +63,32 @@ public class EncounterController : MonoBehaviour
         if (distance <= encounterRadius)
         {
             // Trigger encounter
+            string sceneToLoad = battleSceneName;
+
+            if (useConditionalScene)
+            {
+               int prefValue = PlayerPrefs.GetInt(conditionKey, 0);
+               Debug.Log($"[EncounterController] Conditional check enabled. Key: '{conditionKey}', Value: {prefValue}");
+               
+               if (prefValue == 1)
+               {
+                   sceneToLoad = alternateBattleSceneName;
+                   Debug.Log($"[EncounterController] Condition met! Switching scene to: '{sceneToLoad}'");
+               }
+               else 
+               {
+                   Debug.Log($"[EncounterController] Condition NOT met. Loading default scene: '{sceneToLoad}'");
+               }
+            }
+
             if (SceneTransitionManager.Instance != null)
             {
-                SceneTransitionManager.Instance.LoadScene(battleSceneName);
+                SceneTransitionManager.Instance.LoadScene(sceneToLoad);
             }
             else
             {
                 // Fallback if manager is missing
-                SceneManager.LoadScene(battleSceneName);
+                SceneManager.LoadScene(sceneToLoad);
             }
         }
     }

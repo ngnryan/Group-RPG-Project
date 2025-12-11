@@ -88,8 +88,20 @@ public class BattleLogic : MonoBehaviour
             PlayerPrefs.Save();
 
             yield return new WaitForSeconds(3f);
+            
+            string sceneName = SceneManager.GetActiveScene().name;
+            Debug.Log($"[BattleLogic] Battle Won. Current Scene: '{sceneName}'");
 
-            SceneManager.LoadScene("Moonpaw Veil");
+            if (sceneName == "FinalBattleScene")
+            {
+                Debug.Log("[BattleLogic] Transitioning to EndingScene.");
+                SceneManager.LoadScene("EndingScene");
+            }
+            else
+            {
+                Debug.Log("[BattleLogic] Transitioning to Moonpaw Veil.");
+                SceneManager.LoadScene("Moonpaw Veil");
+            }
             yield break;
         }
 
@@ -114,6 +126,21 @@ public class BattleLogic : MonoBehaviour
 
 
             PlayerPrefs.SetInt("BattleLost", 1);
+            
+            // Check if we are in the specific "BattleScene" (dedicated to Headmaster)
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log($"[BattleLogic] Player lost in scene: '{currentSceneName}'");
+            
+            if (currentSceneName == "BattleScene")
+            {
+                Debug.Log("[BattleLogic] Scene identified as 'BattleScene'. Setting 'LostToEvilCatMaster' to 1.");
+                PlayerPrefs.SetInt("LostToEvilCatMaster", 1);
+            }
+            else 
+            {
+                Debug.Log($"[BattleLogic] Scene '{currentSceneName}' is not 'BattleScene'. Pref NOT set.");
+            }
+            
             PlayerPrefs.Save();
 
             yield return new WaitForSeconds(3f);

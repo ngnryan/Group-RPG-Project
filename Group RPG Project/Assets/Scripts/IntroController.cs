@@ -10,6 +10,7 @@ public class IntroController : MonoBehaviour
     {
         // Reset the battle lost flag when the game starts (Intro Scene)
         PlayerPrefs.SetInt("BattleLost", 0);
+        PlayerPrefs.SetInt("LostToEvilCatMaster", 0);
         PlayerPrefs.Save();
     }
 
@@ -19,6 +20,10 @@ public class IntroController : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
+        // Set flag to indicate we are coming from the Intro scene
+        PlayerPrefs.SetInt("ComingFromIntro", 1);
+        PlayerPrefs.Save();
+        
         SceneManager.LoadScene(sceneToLoad);
     }
 }

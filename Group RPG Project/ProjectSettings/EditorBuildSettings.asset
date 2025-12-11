@@ -15,8 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Moonpaw Veil.unity
     guid: 38387c1738a287f4490323731ae9fe60
   - enabled: 1
+    path: Assets/Scenes/GrassSlimeBS.unity
+    guid: 9c28d6b04feda4514b0984891a9fb381
+  - enabled: 1
+    path: Assets/Scenes/FinalBattleScene.unity
+    guid: 36493d3dab85f41fbb021a84f1f77d88
+  - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 98f56bb4e64154cf39030f55e938b8af
+  - enabled: 1
+    path: Assets/Scenes/WaterSlimeBS.unity
+    guid: 3054f462206f4460fb427f7a0c4129a0
+  - enabled: 1
+    path: Assets/Scenes/EndingScene.unity
+    guid: aedb4f46e4842423bbf51352280351f6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

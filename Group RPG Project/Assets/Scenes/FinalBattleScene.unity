@@ -3423,9 +3423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d90aa9835c9f4b21b642c21dc12e9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  health: 100
+  health: 150
   mana: 10
-  level: 10
+  level: 30
   speed: 15
   power: 5
 --- !u!114 &1811566700

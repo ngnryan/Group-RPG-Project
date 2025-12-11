@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace VFX
 {
@@ -23,6 +26,7 @@ namespace VFX
             shaderPropertyID_Past = Shader.PropertyToID("_TargetTurbulencePose2");
 
 #if UNITY_EDITOR
+            // Only subscribe in Editor mode
             EditorApplication.update += UpdateInEditor;
 #endif
         }
@@ -30,21 +34,24 @@ namespace VFX
         void OnDisable()
         {
 #if UNITY_EDITOR
+            // Only unsubscribe in Editor mode
             EditorApplication.update -= UpdateInEditor;
 #endif
         }
 
         void FixedUpdate()
         {
+            // In Play Mode (build or editor)
             if (Application.isPlaying)
             {
-                UpdateShader((float)EditorApplication.timeSinceStartup);
+                UpdateShader(Time.time);
             }
         }
 
 #if UNITY_EDITOR
         void UpdateInEditor()
         {
+            // In Editor but NOT playing
             if (!Application.isPlaying)
             {
                 UpdateShader((float)EditorApplication.timeSinceStartup);

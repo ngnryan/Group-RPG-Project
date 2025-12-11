@@ -75,6 +75,7 @@ public class BattleLogic : MonoBehaviour
             winningScreen.SetActive(true);
             winningScreen.transform.SetAsLastSibling();
 
+            player.characterStats.level = 10;
 
             PlayerPrefs.SetInt("BattleWon", 1);
             PlayerPrefs.Save();
